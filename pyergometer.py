@@ -12,25 +12,40 @@ log = logging.getLogger(__name__)
 
 
 import time, argparse
-from kettler import Kettler
 from session import Session
-#from simulator import Simulator
+from kettler import Kettler
+from simulator import Simulator
+from ergometer import Ergometer
 
         
 if __name__ == '__main__':
     
     parser = argparse.ArgumentParser(description=__doc__, version="v%s" % __version__)
     
-    parser.add_argument('-d', '--device', action='store', dest='device', default=None, help='Serial device')
-    parser.add_argument('-s', '--session', action='store', dest='session', default=None, help='Use this session file (jErgometer-like XML format)')
-    parser.add_argument('-l', '--log', action='store', dest='log', default=None, help='Record session stats to this log file')
-    parser.add_argument('-x', '--simulate', action='store', dest='simulate', default=0.5, type=float, help='Run session file against a simulated human with pulse reaction factor SIMULATE (0.0...1.0)')
+    parser.add_argument('-s', '--session', action='store', dest='session', default=None, required=True, help='Use session file SESSION (jErgometer-like XML format)')
+    parser.add_argument('-d', '--device', action='store', dest='device', default=None, help='Use serial device DEVICE')
+    parser.add_argument('-l', '--log', action='store', dest='log', default=None, help='Record session stats to log file LOG')
+    parser.add_argument('-x', '--simulate', action='store', dest='simulate', default=None, type=float, help='Run session file against a simulated human-ergometer system with pulse reaction factor SIMULATE (0.0...1.0)')
     
     args  = parser.parse_args()
     
+    if not args.session:
+        parser.print_help()
+        exit()
+    
+    session = Session(session=args.session)
+    
     if args.simulate:
-        session = Session(session=args.session)
-        #simulator = Simulator(factor=args.factor)
+        simulator = Simulator(factor=args.simulate)
+        ergometer = Ergometer(device=simulator, session=session)
+    elif args.device:
+        kettler = Kettler(device=args.device)
+        ergometer = Ergometer(device=simulator, session=session)
+    else:
+        parser.print_help()
+        exit()
+
+    ergometer.run()
     
     #bike = Kettler(device=args.device)    
     # for power in range(25, 100, 5):

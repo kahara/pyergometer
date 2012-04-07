@@ -1,6 +1,8 @@
 import serial, time
+from simulator import Simulator
 
-class Kettler:
+
+class Kettler(Simulator):
     def __init__(self, device=None):
         self.device = device
         
