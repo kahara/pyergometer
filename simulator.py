@@ -4,7 +4,7 @@
 
 
 class Simulator:
-    def __init__(self, pulse=70.0):
+    def __init__(self, pulse=135.0):
         self.pulse = pulse
         self.rpm = 50
         self.power = 0

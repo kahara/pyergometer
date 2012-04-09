@@ -45,11 +45,7 @@ class Session:
                     'power': prevstep['power'],
                     'pulse': prevstep['pulse']
                     })
-            
-
-        for step in self.steps:
-            print step
-
+    
     def parse_timestring(self, s):
         duration = 0
         for component in re.findall('(\d*(h|m|s))', s):

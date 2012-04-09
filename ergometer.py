@@ -22,17 +22,32 @@ class Ergometer:
                 return
             
             step = self.session.step(self.pc)
-            sys.stderr.write('%d/%d bpm\t%d W\t%d rpm\n' % (int(self.device.pulse), int(step['pulse']), int(self.device.power), self.device.rpm))
-            
+            sys.stderr.write('%d/%d bpm\t%d W\t%d rpm\n' % (int(self.device.pulse), int(step['pulse']), int(self.device.power), self.device.rpm))            
             self.logtemp.write('%d %d %d %d\n' % (int(self.device.pulse), int(step['pulse']), int(self.device.power), int(self.device.rpm)))
-            
             self.pc += 1
             
             if step['power'] > 0.0:
                 self.device.set_power(absolute=step['power'])
             elif step['pulse'] > 0.0:
-                r = (step['pulse']-self.device.pulse)/200.0
-                self.device.set_power(relative=r)
+
+                diff  = step['pulse'] - self.device.pulse
+                if diff == 0:
+                    return
+                
+                absdiff = abs(diff)
+                
+                if absdiff > 10.0:
+                    r = 0.2
+                elif absdiff > 5.0:
+                    r = 0.1
+                elif absdiff > 1.0:
+                    r = 0.05
+                elif absdiff > 0.0:
+                    r = 0.025
+                else:
+                    r = 0.0
+                
+                self.device.set_power(relative = r if diff > 0 else -r)
                 
         sys.stderr.write('Waiting for session to start')
         while True:
