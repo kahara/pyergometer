@@ -11,7 +11,7 @@ class Session:
         for timeevent in root.find('timeEvents'):
 
             action = timeevent.find('action').attrib['type']
-            value = timeevent.find('action').attrib['value']
+            value = float(timeevent.find('action').attrib['value'])
 
             time = timeevent.attrib['time']
             if time[0] == '+':
@@ -46,8 +46,10 @@ class Session:
                     'pulse': prevstep['pulse']
                     })
             
-        self.logsteps = []
-        
+
+        for step in self.steps:
+            print step
+
     def parse_timestring(self, s):
         duration = 0
         for component in re.findall('(\d*(h|m|s))', s):
@@ -59,3 +61,6 @@ class Session:
                 duration += int(component[0].split('s')[0])
         
         return duration
+
+    def step(self, second):
+        return self.steps[second]

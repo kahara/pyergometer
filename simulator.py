@@ -1,23 +1,22 @@
+# this "simulator" if for basic testing of the system (so as not to
+# annoy the test subject too much with non-functional software and
+# hence repeated re-runs)
+
+
 class Simulator:
-    def __init__(self, factor=None):
-        self.pulse = 0
-        self.rpm = 0
-        self.set_power = 0
-        self.actual_power = 0
-        
-        # xxx set up the simulation part
+    def __init__(self, pulse=70.0):
+        self.pulse = pulse
+        self.rpm = 50
+        self.power = 0
+        self.xpower = float(self.power)
         
     def status(self):
-        # xxx
-        self.pulse = 0
-        self.rpm = 0
-        self.set_power = 0
-        self.actual_power = 0
+        pass
+    
+    def set_power(self, absolute=0.0, relative=0.0):
+        if relative != 0.0:
+            self.xpower += relative
+        elif absolute > 0.0:
+            self.xpower = absolute
         
-    def power(self, watts):
-        if watts < 25:
-            watts = 25
-        if watts > 400:
-            watts = 400
-        
-        # xxx
+        self.power = int(self.xpower)

@@ -25,7 +25,7 @@ if __name__ == '__main__':
     parser.add_argument('-s', '--session', action='store', dest='session', default=None, required=True, help='Use session file SESSION (jErgometer-like XML format)')
     parser.add_argument('-d', '--device', action='store', dest='device', default=None, help='Use serial device DEVICE')
     parser.add_argument('-l', '--log', action='store', dest='log', default=None, help='Record session stats to log file LOG')
-    parser.add_argument('-x', '--simulate', action='store', dest='simulate', default=None, type=float, help='Run session file against a simulated human-ergometer system with pulse reaction factor SIMULATE (0.0...1.0)')
+    parser.add_argument('-x', '--simulate', action='store_true', dest='simulate', default=None, help='Run session file against a simulation')
     
     args  = parser.parse_args()
     
@@ -36,11 +36,11 @@ if __name__ == '__main__':
     session = Session(session=args.session)
     
     if args.simulate:
-        simulator = Simulator(factor=args.simulate)
-        ergometer = Ergometer(device=simulator, session=session)
+        simulator = Simulator()
+        ergometer = Ergometer(device=simulator, session=session, log=args.log)
     elif args.device:
         kettler = Kettler(device=args.device)
-        ergometer = Ergometer(device=simulator, session=session)
+        ergometer = Ergometer(device=kettler, session=session, log=args.log)
     else:
         parser.print_help()
         exit()
