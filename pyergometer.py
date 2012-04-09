@@ -46,12 +46,3 @@ if __name__ == '__main__':
         exit()
 
     ergometer.run()
-    
-    #bike = Kettler(device=args.device)    
-    # for power in range(25, 100, 5):
-    #     print 'req power %d' % (power, )
-    #     bike.power(power)   
-    #     for i in range(0, 10):
-    #         bike.status()
-    #         print '%d bpm\t%d rpm\t%d/%d W' % (bike.pulse, bike.rpm, bike.set_power, bike.actual_power)
-    #         time.sleep(1)

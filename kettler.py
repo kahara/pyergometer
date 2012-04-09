@@ -35,6 +35,7 @@ class Kettler():
         parts = self.serialport.readline().rstrip('\r\n').split('\t')
         self.pulse = int(parts[0], 10)
         self.rpm = int(parts[1], 10)
+        self.power = int(parts[4], 10)
         
     def set_power(self, absolute=0.0, relative=0.0):        
         if relative != 0.0:
