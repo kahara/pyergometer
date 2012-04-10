@@ -14,6 +14,6 @@ that can be used to e.g. visualize the run afterwards.
 Motivation
 ----------
 
-I could not get [.jErgometer](https://github.com/xylo/JErgometer) to work in
+I could not get [jErgometer](https://github.com/xylo/JErgometer) to work in
 Mac OS X 10.6. That is, the program basically worked ok but the Java serial comms
 (RXTXserial) tended to be too unstable.

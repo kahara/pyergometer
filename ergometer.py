@@ -18,11 +18,11 @@ class Ergometer:
             
             self.device.status()
             if self.device.rpm < 20 or self.device.pulse < 20:
-                sys.stderr.write('On hold...\n')
+                sys.stderr.write('.')
                 return
             
             step = self.session.step(self.pc)
-            sys.stderr.write('%d/%d bpm\t%d W\t%d rpm\n' % (int(self.device.pulse), int(step['pulse']), int(self.device.power), self.device.rpm))            
+            sys.stderr.write('\n%d/%d bpm\t%d W\t%d rpm' % (int(self.device.pulse), int(step['pulse']), int(self.device.power), self.device.rpm))            
             self.logtemp.write('%d %d %d %d\n' % (int(self.device.pulse), int(step['pulse']), int(self.device.power), int(self.device.rpm)))
             self.pc += 1
             
