@@ -4,17 +4,24 @@ import serial, time
 def roundto(x, base=5):
     return int(base * round(float(x)/base))
 
+
+def add(x,y):
+    return x + y
+
+
 class Kettler():
     def __init__(self, device=None):
         self.device = device
         
         self.pulse = 0
+        self.pulses = []
         self.rpm = 0
+        self.rpms = []
         self.power = 0
         self.xpower = float(self.power)
         
         self.serialport = serial.Serial(self.device, 9600, timeout=0.1)
-
+        
         if not self.device:
             raise NameError, 'Serial port not specified'
         
@@ -37,15 +44,16 @@ class Kettler():
         self.serialport.write('ST\r\n')
         parts = self.serialport.readline().rstrip('\r\n').split('\t')
         
-        print parts
-        
         try:
-            pulse = int(parts[0], 10)
-            rpm = int(parts[1], 10)
-            power = int(parts[4], 10)
-            self.pulse = pulse
-            self.rpm = rpm
-            self.power = power
+            if len(self.pulses) > 4:
+                self.pulses.pop()
+            self.pulses.insert(0, int(parts[0], 10))
+            self.pulse = int(reduce(add, self.pulses)/len(self.pulses))
+            
+            if len(self.rpms) > 4:
+                self.rpms.pop()
+            self.rpms.insert(0, int(parts[1], 10))
+            self.rpm = int(reduce(add, self.rpms)/len(self.rpms))
         except:
             pass
         
