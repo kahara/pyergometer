@@ -64,10 +64,10 @@ class Kettler():
             self.xpower = absolute
         
         if roundto(self.power) != roundto(self.xpower):
-            self.power = int(self.xpower)
+            self.power = roundto(self.xpower)
             watts = self.power
             if watts < 25:
                 watts = 25
             if watts > 400:
                 watts = 400
-            self.serialport.write('PW ' + str(roundto(watts)) + '\r\n')
+            self.serialport.write('PW ' + str(watts) + '\r\n')
