@@ -37,13 +37,11 @@ class Ergometer:
                 absdiff = abs(diff)
                 
                 if absdiff > 10.0:
-                    r = 0.4
+                    r = 0.25
                 elif absdiff > 5.0:
-                    r = 0.2
-                elif absdiff > 1.0:
-                    r = 0.04
+                    r = 0.125
                 elif absdiff > 0.0:
-                    r = 0.01
+                    r = 0.025
                 else:
                     r = 0.0
                 
