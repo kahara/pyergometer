@@ -59,4 +59,8 @@ class Session:
         return duration
 
     def step(self, second):
-        return self.steps[second]
+        try:
+            s = self.steps[second]
+        except:
+            s = self.steps[-1]
+        return s
