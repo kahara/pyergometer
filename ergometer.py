@@ -31,7 +31,7 @@ class Ergometer:
             elif step['pulse'] > 0.0:
 
                 diff  = step['pulse'] - self.device.pulse
-                if diff == 0:
+                if diff <= 0 and diff >= -5.0:
                     return
                 
                 absdiff = abs(diff)
