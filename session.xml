@@ -5,7 +5,8 @@
     <timeEvent time="+1m"><action type="pulse" value="120"/></timeEvent>
     <timeEvent time="+2m30s"><action type="pulse" value="130"/></timeEvent>
     <timeEvent time="+2m30s"><action type="pulse" value="140"/></timeEvent>
-    <timeEvent time="+10m"><action type="pulse" value="120"/></timeEvent>
+    <timeEvent time="+6m"><action type="pulse" value="150"/></timeEvent>
+    <timeEvent time="+4m"><action type="pulse" value="120"/></timeEvent>
   </timeEvents>
   
   <!-- <program name="TEST" duration="10s"> -->
