@@ -68,6 +68,8 @@ class Kettler():
             watts = self.power
             if watts < 25:
                 watts = 25
+                self.power = watts
             if watts > 400:
                 watts = 400
+                self.power = watts
             self.serialport.write('PW ' + str(watts) + '\r\n')

@@ -37,7 +37,6 @@ if True: #datafile_uploaded:
     k.key = 'data/index.json'
     keynames = []
     for key in bucket.get_all_keys(prefix='data/'):
-        print key.name
         if key.name.endswith('.csv'):
             keynames.append(key.name)
     print 'uploading index', k.key
@@ -48,7 +47,7 @@ for filename in dirwalk('www/'):
     if filename in keynames or 'index.json' == filename or filename.endswith('.csv') or filename.startswith('www/.') or filename.startswith('www/#') or filename.endswith('~') or filename.endswith('-combined.js') or filename.endswith('-min.js'):
         continue
 
-    print 'uploading', filename
+    print 'uploading', filename, filename[4:]
     k = Key(bucket)
-    k.key = filename.split('/')[1]
+    k.key = filename[4:] #filename.split('/')[1]
     k.set_contents_from_filename(filename)

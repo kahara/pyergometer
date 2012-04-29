@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ergometria.async.fi</title>
-  <script src="dygraph-combined.js"></script>
+  <title>ergometria.async.fi</title>  
+  <style>
+    .dygraph-legend {
+    left: 85px !important;
+    top: 20px !important;
+    }
+  </style>
+  
 </head>
 <body>
+  
+  <p style="clear: both; width: 15em; margin: 0px; padding: 10px;">
+    <a href="/live/">LIVE</a>
+  </p>
   
   <div id="sessions" style="float: left; width: 15em; margin: 0px; padding: 10px;"></div>
   
@@ -12,6 +22,7 @@
   
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   <script src="underscore-min.js"></script>
+  <script src="dygraph-combined.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

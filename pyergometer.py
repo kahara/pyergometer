@@ -10,14 +10,13 @@ __license__ = "GNU GPL 3.0 or later"
 import logging
 log = logging.getLogger(__name__)
 
-
-import time, argparse
+import argparse
 from session import Session
 from kettler import Kettler
 from simulator import Simulator
 from ergometer import Ergometer
+from telemetry import Telemetry
 
-        
 if __name__ == '__main__':
     
     parser = argparse.ArgumentParser(description=__doc__, version="v%s" % __version__)
@@ -44,5 +43,11 @@ if __name__ == '__main__':
     else:
         parser.print_help()
         exit()
-
+    
+    telemetry = Telemetry(ergometer=ergometer, session=session)
+    try:
+        telemetry.start()
+    except(KeyboardInterrupt, SystemExit):
+        sys.exit()
+    
     ergometer.run()

@@ -25,7 +25,11 @@ $(document).ready(function() {
 	$('#graph').width(w1-w2-100);
 	$('#graph').height(h1-100);
 	
-	g = new Dygraph($('#graph').get(0), sessions[sessions.length-1]);
-	
+	g = new Dygraph($('#graph').get(0), sessions[sessions.length-1], {
+	    hideOverlayOnMouseOut: false,
+	    displayAnnotations: true,
+	    labelsSeparateLines: true,
+	    legend: 'always'
+	});
     });
 });

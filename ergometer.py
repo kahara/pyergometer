@@ -5,15 +5,17 @@ class Ergometer:
     def __init__(self, device=None, session=None, log=None):
         self.device = device
         self.session = session
+        self.pc = 0
+        
         if log:
             self.logtemp = tempfile.NamedTemporaryFile(mode='w', delete=False)
             self.log = log            
+            
         else:
             self.logtemp = None
             self.log = None
     
     def run(self):
-        self.pc = 0
         def handler(signum, frame):
             
             self.device.status()
@@ -22,14 +24,16 @@ class Ergometer:
                 return
             
             step = self.session.step(self.pc)
-            sys.stderr.write('\n%d/%d bpm\t%d W\t%d rpm' % (int(self.device.pulse), int(step['pulse']), int(self.device.power), self.device.rpm))            
-            self.logtemp.write('%d %d %d %d\n' % (int(self.device.pulse), int(step['pulse']), int(self.device.power), int(self.device.rpm)))
-            self.pc += 1
+            sys.stderr.write('\n%d/%d bpm\t%d W\t%d rpm' % (int(self.device.pulse), int(step['pulse']), int(self.device.power), self.device.rpm))
             
+            self.logtemp.write('%d %d %d %d\n' % (int(self.device.pulse), int(step['pulse']), int(self.device.power), int(self.device.rpm)))
+            self.logtemp.flush()
+            
+            self.pc += 1
             if step['power'] > 0.0:
                 self.device.set_power(absolute=step['power'])
             elif step['pulse'] > 0.0:
-
+                
                 diff  = step['pulse'] - self.device.pulse
                 if diff <= 0 and diff >= -5.0:
                     return
@@ -57,7 +61,6 @@ class Ergometer:
                 sys.stderr.write('..ok\n')
                 self.begin = datetime.datetime.utcnow()
                 break
-
         
         signal.signal(signal.SIGALRM, handler)
         signal.setitimer(signal.ITIMER_REAL, 1, 1)
@@ -70,6 +73,13 @@ class Ergometer:
         self.finish()
         
     def finish(self):
+        print '\nfinishing...'
+        
+        self.device.pulse = 0
+        self.session.step(self.pc)['pulse'] = 0
+        self.device.power = 0
+        self.device.rpm = 0
+        
         if self.log:
             self.logtemp.close()
             
@@ -97,3 +107,5 @@ class Ergometer:
             
             open(self.log, 'w').write(json.dumps(data))                
             os.remove(self.logtemp.name)
+        
+        exit()
