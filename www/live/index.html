@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ergometria.async.fi LIVE</title>
+  <style>
+    h1 { font-size: 200%; padding-top: 1.5m; }
+    h2 { font-size: 350%; margin-top: 0px; }
+    .shadow { text-shadow: #bbb 0px 0px 5px; }
+    .dygraph-legend {
+    left: 85px !important;
+    top: 20px !important;
+    }
+  </style>
+</head>
+<body>
+  <div id="readings" style="float: left; width: 15em; margin: 0px; padding: 10px;">
+    <h1 style="color: #dd0000">Pulse</h1><h2 class="pulse">000</h2>
+    <h1 style="color: #0000dd">Target pulse</h1><h2 class="target_pulse">000</h2>
+    <h1 style="color: #00dd00">Power</h1><h2 class="power">000</h2>
+    <h1 style="color: #dddd00">Rpm</h1><h2 class="rpm">000</h2>
+    <p class="standby blink">Waiting for a new session to start&hellip;</p>
+    <p class="live" style="display: none;">Live</p>
+    <p style"display: none;" class="timestamp">000</p>
+  </div>
+  
+  <div id="graph" style="float: left; margin: 0px; padding: 15px;"></div>
+  
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script src="../underscore-min.js"></script>
+  <script src="../dygraph-combined.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
