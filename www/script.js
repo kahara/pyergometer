@@ -29,7 +29,8 @@ $(document).ready(function() {
 	    hideOverlayOnMouseOut: false,
 	    displayAnnotations: true,
 	    labelsSeparateLines: true,
-	    legend: 'always'
+	    legend: 'always',
+	    drawXGrid: false
 	});
     });
 });
