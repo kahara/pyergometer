@@ -1,5 +1,5 @@
-<!--<program name="Pulse 140 (1+5+10+5 min)" duration="21m">-->
-<program name="TEST" duration="1m">
+<!-- <program name="Pulse 140 (1+5+10+5 min)" duration="21m"> -->
+<program name="TEST" duration="30s">
 
   <!-- <timeEvents> -->
   <!--   <timeEvent time="0"><action type="power" value="100"/></timeEvent> -->

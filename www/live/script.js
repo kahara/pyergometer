@@ -37,9 +37,8 @@ $(document).ready(function() {
 			//valueRange: [0, 200],
 			displayAnnotations: true,
 			labelsSeparateLines: true,
-			drawPoints: true,
-			hideOverlayOnMouseOut: true
-			//legend: 'always'
+			hideOverlayOnMouseOut: false,
+			legend: 'always'
 		    });
 		}
 		console.log(data);

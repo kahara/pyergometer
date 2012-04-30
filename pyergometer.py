@@ -54,3 +54,4 @@ if __name__ == '__main__':
     ergometer.run()
     
     telemetry.running = False
+    telemetry.join()
