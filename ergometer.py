@@ -107,5 +107,3 @@ class Ergometer:
             
             open(self.log, 'w').write(json.dumps(data))                
             os.remove(self.logtemp.name)
-        
-        exit()

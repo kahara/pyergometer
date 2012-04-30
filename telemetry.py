@@ -4,7 +4,7 @@ import boto
 from boto.s3.bucket import Bucket
 from boto.s3.key import Key
 from boto.cloudfront import CloudFrontConnection
-import json, datetime
+import json, datetime, signal
 
 
 class Telemetry(threading.Thread):
@@ -12,6 +12,7 @@ class Telemetry(threading.Thread):
         threading.Thread.__init__(self)
         self.ergometer = ergometer
         self.session = session
+        self.running = True
         
     def run(self):
         connection = boto.connect_s3()
@@ -20,6 +21,9 @@ class Telemetry(threading.Thread):
         k.key = 'live/latest.json'
         
         while True:
+            if not self.running:
+                return
+            
             data = {
                 'timestamp': datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S+0000'),
                 'pulse': self.ergometer.device.pulse,

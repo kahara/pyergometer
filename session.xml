@@ -1,5 +1,6 @@
-<program name="Pulse 140 (1+5+10+5 min)" duration="21m">
-  
+<!--<program name="Pulse 140 (1+5+10+5 min)" duration="21m">-->
+<program name="TEST" duration="1m">
+
   <!-- <timeEvents> -->
   <!--   <timeEvent time="0"><action type="power" value="100"/></timeEvent> -->
   <!--   <timeEvent time="+1m"><action type="pulse" value="120"/></timeEvent> -->
@@ -11,7 +12,7 @@
 
   <timeEvents>
     <timeEvent time="0"><action type="power" value="25"/></timeEvent>
-    <timeEvent time="+1s"><action type="pulse" value="80"/></timeEvent>
+    <timeEvent time="+1s"><action type="pulse" value="125"/></timeEvent>
   </timeEvents>
   
   <!-- <program name="TEST" duration="10s"> -->

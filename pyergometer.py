@@ -48,6 +48,9 @@ if __name__ == '__main__':
     try:
         telemetry.start()
     except(KeyboardInterrupt, SystemExit):
+        telemetry.running = False
         sys.exit()
     
     ergometer.run()
+    
+    telemetry.running = False

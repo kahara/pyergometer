@@ -4,3 +4,5 @@ env/*
 log/*
 *~
 data/*.json
+www/live/latest.json
+build/
