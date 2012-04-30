@@ -4,7 +4,7 @@ import boto
 from boto.s3.bucket import Bucket
 from boto.s3.key import Key
 from boto.cloudfront import CloudFrontConnection
-import json, datetime, signal
+import json, datetime, signal, os
 
 
 class Telemetry(threading.Thread):
@@ -46,5 +46,6 @@ class Telemetry(threading.Thread):
             sleep(0.5)
             
             if not self.running:
+                os.remove('www/live/latest.json')
                 self.k.delete()
                 return
