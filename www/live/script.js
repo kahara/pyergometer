@@ -16,7 +16,7 @@ $(document).ready(function() {
 	    cache: false,
 	    ifModified: true,
 	    dataType: 'json',
-	    timeout: 350,
+	    timeout: 500,
 	    success: function(data) {
 		
 		if(!data) return;
@@ -53,7 +53,7 @@ $(document).ready(function() {
 		g.updateOptions({ 'file': session });
 	    }
 	});
-    }, 500);
+    }, 1000);
     
     setInterval(function() {
 	$('.blink').addClass('shadow');

@@ -27,7 +27,6 @@ class Telemetry(threading.Thread):
             'power': power,
             'rpm': rpm
             }
-        print data
         f = open('www/' + self.k.key, 'w')
         f.write(json.dumps(data))
         f.close()

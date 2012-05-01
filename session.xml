@@ -1,19 +1,19 @@
-<!-- <program name="Pulse 140 (1+5+10+5 min)" duration="21m"> -->
-<program name="TEST" duration="30s">
-
-  <!-- <timeEvents> -->
-  <!--   <timeEvent time="0"><action type="power" value="100"/></timeEvent> -->
-  <!--   <timeEvent time="+1m"><action type="pulse" value="120"/></timeEvent> -->
-  <!--   <timeEvent time="+2m30s"><action type="pulse" value="130"/></timeEvent> -->
-  <!--   <timeEvent time="+2m30s"><action type="pulse" value="140"/></timeEvent> -->
-  <!--   <timeEvent time="+6m"><action type="pulse" value="150"/></timeEvent> -->
-  <!--   <timeEvent time="+4m"><action type="pulse" value="120"/></timeEvent> -->
-  <!-- </timeEvents> -->
+<program name="Pulse 140 (1+5+10+5 min)" duration="21m">
+<!-- <program name="TEST" duration="30s"> -->
 
   <timeEvents>
-    <timeEvent time="0"><action type="power" value="25"/></timeEvent>
-    <timeEvent time="+1s"><action type="pulse" value="125"/></timeEvent>
+    <timeEvent time="0"><action type="power" value="100"/></timeEvent>
+    <timeEvent time="+1m"><action type="pulse" value="120"/></timeEvent>
+    <timeEvent time="+2m30s"><action type="pulse" value="130"/></timeEvent>
+    <timeEvent time="+2m30s"><action type="pulse" value="140"/></timeEvent>
+    <timeEvent time="+6m"><action type="pulse" value="150"/></timeEvent>
+    <timeEvent time="+4m"><action type="pulse" value="120"/></timeEvent>
   </timeEvents>
+
+  <!-- <timeEvents> -->
+  <!--   <timeEvent time="0"><action type="power" value="25"/></timeEvent> -->
+  <!--   <timeEvent time="+1s"><action type="pulse" value="125"/></timeEvent> -->
+  <!-- </timeEvents> -->
   
   <!-- <program name="TEST" duration="10s"> -->
   <!-- <timeEvents> -->
