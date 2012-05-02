@@ -44,7 +44,7 @@ if True: #datafile_uploaded:
     
     
 for filename in dirwalk('www/'):
-    if filename in keynames or 'index.json' == filename or filename.endswith('.csv') or filename.startswith('www/.') or filename.startswith('www/#') or filename.endswith('~') or filename.endswith('-combined.js') or filename.endswith('-min.js'):
+    if filename in keynames or 'index.json' == filename or filename.endswith('.csv') or filename.startswith('www/.') or filename.startswith('www/#') or filename.endswith('~') or filename.endswith('-combined.js') or filename.endswith('-min.js') or filename.startswith('www/data'):
         continue
 
     print 'uploading', filename, filename[4:]

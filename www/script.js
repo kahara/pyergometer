@@ -5,7 +5,6 @@ var g;
 $(document).ready(function() {
     
     $.getJSON('data/index.json', function(sessions) {
-	
 	_.each(sessions, function(session) {
 	    $('#sessions').prepend(_.template('<p><a href="<%= session_url %>"><%= session_name %></a></p>', { session_name: session.split('/')[1].split('.')[0].replace('T', ' '), session_url: session }));
 	});
@@ -13,6 +12,52 @@ $(document).ready(function() {
 	$('#sessions p a').click(function(e) {
 	    e.preventDefault();
 	    g.updateOptions({ file: $(this).attr('href') });
+	    
+	    $.ajax('summary.tmpl', {
+		cache: true,
+		dataType: 'text',
+		timeout: 5000,
+		success: function(tmpl) {
+		    $.ajax($(e.target).attr('href'), {
+		    	cache: true,
+		    	dataType: 'text',
+		    	timeout: 5000,
+		    	success: function(data) {
+			    var lines = data.split('\n');
+			    
+			    var pulse_total = 0, target_total = 0, power_total = 0, rpm_total = 0;
+			    
+			    var nlines = 0;
+			    _.each(lines, function(line, index) {
+				if(index == 0 || line.length < 1) return;
+				var parts = line.split(',');
+				pulse_total += parseInt(parts[3]);
+				target_total += parseInt(parts[4]);
+				power_total += parseInt(parts[1]);
+				rpm_total += parseInt(parts[2]);
+				nlines++;
+			    });
+			    
+			    var pulse_avg = Math.round(pulse_total/nlines);
+			    var target_avg = Math.round(target_total/nlines);
+			    var rpm_avg = Math.round(rpm_total/nlines);
+			    
+			    var power_avg = Math.round(power_total/nlines);
+			    var watt_hours = Math.round(power_total/3600);
+			    
+			    console.log();
+			    
+			    $('#summary').html(_.template(tmpl, {
+				power_avg: power_avg,
+				watt_hours: watt_hours,
+				rpm_avg: rpm_avg,
+				pulse_avg: pulse_avg,
+				target_avg: target_avg
+			    }));
+			}
+		    });
+		}
+	    });
 	});
 	
 	var w1 = $(window).width();
@@ -23,8 +68,11 @@ $(document).ready(function() {
 	console.log(w1, h1, w2);
 	
 	$('#graph').width(w1-w2-100);
-	$('#graph').height(h1-100);
+	$('#graph').height(h1-250);
 	
+	$('#summary').width($('#graph').width());
+	$('#summary').css('margin-left', w2 + 'px');
+
 	g = new Dygraph($('#graph').get(0), sessions[sessions.length-1], {
 	    hideOverlayOnMouseOut: false,
 	    displayAnnotations: true,
@@ -32,5 +80,6 @@ $(document).ready(function() {
 	    legend: 'always',
 	    drawXGrid: false
 	});
+	$('#sessions p:first a').click();
     });
 });
