@@ -41,13 +41,21 @@ class Ergometer:
                 absdiff = abs(diff)
                 
                 if absdiff > 10.0:
-                    r = 0.25
+                    r = 0.30
                 elif absdiff > 5.0:
-                    r = 0.125
+                    r = 0.15
                 elif absdiff > 0.0:
-                    r = 0.025
+                    r = 0.03
                 else:
                     r = 0.0
+                # if absdiff > 10.0:
+                #     r = 0.25
+                # elif absdiff > 5.0:
+                #     r = 0.125
+                # elif absdiff > 0.0:
+                #     r = 0.025
+                # else:
+                #     r = 0.0
                 
                 self.device.set_power(relative = r if diff > 0 else -r)
                 
