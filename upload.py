@@ -35,12 +35,40 @@ for filename in dirwalk('data/'):
 if True: #datafile_uploaded:
     k = Key(bucket)
     k.key = 'data/index.json'
-    keynames = []
+    sessions = []
     for key in bucket.get_all_keys(prefix='data/'):
         if key.name.endswith('.csv'):
-            keynames.append(key.name)
+            sessions.append(key.name)
+    data = {
+        'sessions': sessions,
+        'overview': 'Time,Avg power (W),Avg rpm,Avg pulse,Avg target pulse\n'
+        }
+    
+    for filename in dirwalk('data/'):
+        if not filename.endswith('.json'):
+            time = filename.split('/')[1].split('.')[0]
+            nlines = 0
+            power = 0
+            rpm = 0
+            pulse = 0
+            target = 0
+            for index, line in enumerate(open(filename).read().split('\n')):
+                if index > 0 and len(line) > 0:
+                    nlines += 1
+                    parts = line.split(',')
+                    power += int(parts[1])
+                    rpm += int(parts[2])
+                    pulse += int(parts[3])
+                    target += int(parts[4])
+            power = power/nlines
+            rpm = rpm/nlines
+            pulse = pulse/nlines
+            target = target/nlines
+            
+            data['overview'] += '%s,%d,%d,%d,%d\n' % (time, power, rpm, pulse, target)
+            
     print 'uploading index', k.key
-    k.set_contents_from_string(json.dumps(keynames), headers={'Content-Type': 'application/json'})
+    k.set_contents_from_string(json.dumps(data), headers={'Content-Type': 'application/json'})
     
     
 for filename in dirwalk('www/'):
@@ -51,3 +79,4 @@ for filename in dirwalk('www/'):
     k = Key(bucket)
     k.key = filename[4:] #filename.split('/')[1]
     k.set_contents_from_filename(filename)
+

@@ -4,13 +4,25 @@
 var g;
 $(document).ready(function() {
     
-    $.getJSON('data/index.json', function(sessions) {
-	_.each(sessions, function(session) {
-	    $('#sessions').prepend(_.template('<p><a href="<%= session_url %>"><%= session_name %></a></p>', { session_name: session.split('/')[1].split('.')[0].replace('T', ' '), session_url: session }));
+    $.getJSON('data/index.json', function(data) {
+	
+	_.each(data['sessions'], function(session) {
+	    $('#sessions').prepend(_.template('<p><a class="session" href="<%= session_url %>"><%= session_name %></a></p>', { session_name: session.split('/')[1].split('.')[0].replace('T', ' '), session_url: session }));
 	});
 	
-	$('#sessions p a').click(function(e) {
+	$('#overview').click(function(e) {
 	    e.preventDefault();
+	    $('span#marker').remove();
+	    $(this).append('<span id="marker"> *</span>');
+	    g.updateOptions({ file: data['overview'] });
+	});
+	
+	$('#sessions p a.session').click(function(e) {
+	    e.preventDefault();
+
+	    $('span#marker').remove();
+	    $(this).append('<span id="marker"> *</span>');
+
 	    g.updateOptions({ file: $(this).attr('href') });
 	    
 	    $.ajax('summary.tmpl', {
@@ -61,25 +73,23 @@ $(document).ready(function() {
 	});
 	
 	var w1 = $(window).width();
-	var h1 = $(window).height();
-	
+	var h1 = $(window).height();	
 	var w2 = $('#sessions').width();
-	
-	console.log(w1, h1, w2);
 	
 	$('#graph').width(w1-w2-100);
 	$('#graph').height(h1-250);
 	
 	$('#summary').width($('#graph').width());
 	$('#summary').css('margin-left', w2 + 'px');
-
-	g = new Dygraph($('#graph').get(0), sessions[sessions.length-1], {
-	    hideOverlayOnMouseOut: false,
+	
+	//g = new Dygraph($('#graph').get(0), data['sessions'][data['sessions'].length-1], {
+	g = new Dygraph($('#graph').get(0), data['overview'], {
+	    hideOverlayOnMouseOut: true,
 	    displayAnnotations: true,
 	    labelsSeparateLines: true,
-	    legend: 'always',
+	    //legend: 'always',
 	    drawXGrid: false
 	});
-	$('#sessions p:first a').click();
+	//$('#sessions p:first a').click();
     });
 });
