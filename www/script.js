@@ -13,6 +13,7 @@ $(document).ready(function() {
 	$('#overview').click(function(e) {
 	    e.preventDefault();
 	    $('span#marker').remove();
+	    $('#summary').html('');
 	    $(this).append('<span id="marker"> *</span>');
 	    g.updateOptions({ file: data['overview'] });
 	});
