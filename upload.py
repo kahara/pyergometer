@@ -41,7 +41,7 @@ if True: #datafile_uploaded:
             sessions.append(key.name)
     data = {
         'sessions': sessions,
-        'overview': 'Time,Avg power (W),Avg rpm,Avg pulse,Avg target pulse\n'
+        'overview': 'Time,Avg power (W),Total power (Wh),Avg rpm,Avg pulse,Avg target pulse\n'
         }
     
     for filename in dirwalk('data/'):
@@ -60,12 +60,13 @@ if True: #datafile_uploaded:
                     rpm += int(parts[2])
                     pulse += int(parts[3])
                     target += int(parts[4])
+            total = power/3600
             power = power/nlines
             rpm = rpm/nlines
             pulse = pulse/nlines
             target = target/nlines
             
-            data['overview'] += '%s,%d,%d,%d,%d\n' % (time, power, rpm, pulse, target)
+            data['overview'] += '%s,%d,%d,%d,%d,%d\n' % (time, power, total, rpm, pulse, target)
             
     print 'uploading index', k.key
     k.set_contents_from_string(json.dumps(data), headers={'Content-Type': 'application/json'})
