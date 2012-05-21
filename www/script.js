@@ -89,7 +89,16 @@ $(document).ready(function() {
 	    displayAnnotations: true,
 	    labelsSeparateLines: true,
 	    //legend: 'always',
-	    drawXGrid: false
+	    drawXGrid: false//,
+	    // axisLabelFontSize: 9,
+	    // axes: {
+	    // 	x: {
+            //         axisLabelFormatter: function(d) {
+	    // 		console.log(d);
+	    // 		return d.strftime('%Y-%m-%d');
+            //         }
+	    // 	}
+	    // }
 	});
 	//$('#sessions p:first a').click();
     });

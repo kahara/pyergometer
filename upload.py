@@ -66,7 +66,7 @@ if True: #datafile_uploaded:
             pulse = pulse/nlines
             target = target/nlines
             
-            data['overview'] += '%s,%d,%d,%d,%d,%d\n' % (time, power, total, rpm, pulse, target)
+            data['overview'] += '%s,%d,%d,%d,%d,%d\n' % (time.split('T')[0], power, total, rpm, pulse, target)
             
     print 'uploading index', k.key
     k.set_contents_from_string(json.dumps(data), headers={'Content-Type': 'application/json'})
