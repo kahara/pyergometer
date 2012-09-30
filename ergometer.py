@@ -26,9 +26,12 @@ class Ergometer:
             step = self.session.step(self.pc)
             sys.stderr.write('\n%d/%d bpm\t%d W\t%d rpm' % (int(self.device.pulse), int(step['pulse']), int(self.device.power), self.device.rpm))
             
-            self.logtemp.write('%d %d %d %d\n' % (int(self.device.pulse), int(step['pulse']), int(self.device.power), int(self.device.rpm)))
-            self.logtemp.flush()
-            
+            try:
+                self.logtemp.write('%d %d %d %d\n' % (int(self.device.pulse), int(step['pulse']), int(self.device.power), int(self.device.rpm)))
+                self.logtemp.flush()
+            except:
+                pass
+
             self.pc += 1
             if step['power'] > 0.0:
                 self.device.set_power(absolute=step['power'])
