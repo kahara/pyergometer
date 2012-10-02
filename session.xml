@@ -1,6 +1,6 @@
 <program name="41 minutes" duration="41m">
   <timeEvents>
-    <timeEvent time="0"><action type="power" value="100"/></timeEvent>
+    <timeEvent time="0"><action type="power" value="75"/></timeEvent>
     <timeEvent time="+30s"><action type="pulse" value="105"/></timeEvent>
     <timeEvent time="+30s"><action type="pulse" value="110"/></timeEvent>
     <timeEvent time="+1m"><action type="pulse" value="115"/></timeEvent>
