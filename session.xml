@@ -2,9 +2,12 @@
   <timeEvents>
     <timeEvent time="0"><action type="power" value="80"/></timeEvent>
     <timeEvent time="+30s"><action type="pulse" value="100"/></timeEvent>
-    <timeEvent time="+1m30s"><action type="pulse" value="120"/></timeEvent>
-    <timeEvent time="+2m"><action type="pulse" value="130"/></timeEvent>
-    <timeEvent time="+2m"><action type="pulse" value="140"/></timeEvent>
+    <timeEvent time="+30s"><action type="pulse" value="110"/></timeEvent>
+    <timeEvent time="+1m"><action type="pulse" value="120"/></timeEvent>
+    <timeEvent time="+1m"><action type="pulse" value="125"/></timeEvent>
+    <timeEvent time="+1m"><action type="pulse" value="130"/></timeEvent>
+    <timeEvent time="+1m"><action type="pulse" value="135"/></timeEvent>
+    <timeEvent time="+1m"><action type="pulse" value="140"/></timeEvent>
     <timeEvent time="+2m30s"><action type="pulse" value="145"/></timeEvent>
     <timeEvent time="+2m30s"><action type="pulse" value="150"/></timeEvent>
   </timeEvents>
