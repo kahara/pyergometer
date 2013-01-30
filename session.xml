@@ -1,4 +1,15 @@
-<program name="41 minutes" duration="41m">
+<program name="25 minutes" duration="25m">
+  <timeEvents>
+    <timeEvent time="0"><action type="power" value="75"/></timeEvent>
+    <timeEvent time="+1m"><action type="pulse" value="110"/></timeEvent>
+    <timeEvent time="+1m"><action type="pulse" value="115"/></timeEvent>
+    <timeEvent time="+1m"><action type="pulse" value="120"/></timeEvent>
+    <timeEvent time="+2m"><action type="pulse" value="125"/></timeEvent>
+    <timeEvent time="+2m"><action type="pulse" value="130"/></timeEvent>
+    <timeEvent time="+3m"><action type="pulse" value="135"/></timeEvent>
+  </timeEvents>
+</program>
+<!--<program name="41 minutes" duration="41m">
   <timeEvents>
     <timeEvent time="0"><action type="power" value="80"/></timeEvent>
     <timeEvent time="+30s"><action type="pulse" value="110"/></timeEvent>
@@ -11,7 +22,7 @@
     <timeEvent time="+2m30s"><action type="pulse" value="145"/></timeEvent>
     <timeEvent time="+2m30s"><action type="pulse" value="150"/></timeEvent>
   </timeEvents>
-</program>
+</program>-->
 <!--<program name="41 minutes" duration="41m">
   <timeEvents>
     <timeEvent time="0"><action type="power" value="75"/></timeEvent>
