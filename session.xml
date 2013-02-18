@@ -8,6 +8,7 @@
     <timeEvent time="+2m"><action type="pulse" value="130"/></timeEvent>
     <timeEvent time="+2m"><action type="pulse" value="135"/></timeEvent>
     <timeEvent time="+2m"><action type="pulse" value="140"/></timeEvent>
+    <timeEvent time="+2m"><action type="pulse" value="145"/></timeEvent>
   </timeEvents>
 </program>
 <!--<program name="41 minutes" duration="41m">
