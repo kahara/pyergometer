@@ -1,4 +1,33 @@
-<program name="30 minutes" duration="30m">
+<program name="45 minutes" duration="46m">
+  <timeEvents>
+    <timeEvent time="0"><action type="power" value="80"/></timeEvent>
+    <timeEvent time="+1m"><action type="power" value="150"/></timeEvent>
+    <timeEvent time="+5m"><action type="power" value="170"/></timeEvent>
+    <timeEvent time="+5m"><action type="power" value="150"/></timeEvent>
+    <timeEvent time="+5m"><action type="power" value="170"/></timeEvent>
+    <timeEvent time="+5m"><action type="power" value="150"/></timeEvent>
+    <timeEvent time="+5m"><action type="power" value="170"/></timeEvent>
+    <timeEvent time="+5m"><action type="power" value="150"/></timeEvent>
+    <timeEvent time="+5m"><action type="power" value="170"/></timeEvent>
+    <timeEvent time="+5m"><action type="power" value="150"/></timeEvent>
+    <timeEvent time="+5m"><action type="power" value="170"/></timeEvent>
+    <timeEvent time="+5m"><action type="power" value="160"/></timeEvent>
+    <timeEvent time="+5m"><action type="power" value="180"/></timeEvent>
+  </timeEvents>
+</program>
+<!--<program name="60 minutes" duration="61m">
+  <timeEvents>
+    <timeEvent time="0"><action type="power" value="80"/></timeEvent>
+    <timeEvent time="+1m"><action type="power" value="110"/></timeEvent>
+    <timeEvent time="+10m"><action type="power" value="130"/></timeEvent>
+    <timeEvent time="+10m"><action type="power" value="110"/></timeEvent>
+    <timeEvent time="+10m"><action type="power" value="130"/></timeEvent>
+    <timeEvent time="+10m"><action type="power" value="110"/></timeEvent>
+    <timeEvent time="+10m"><action type="power" value="130"/></timeEvent>
+    <timeEvent time="+5m"><action type="power" value="150"/></timeEvent>
+  </timeEvents>
+</program>-->
+<!--<program name="30 minutes" duration="30m">
   <timeEvents>
     <timeEvent time="0"><action type="power" value="75"/></timeEvent>
     <timeEvent time="+1m"><action type="pulse" value="110"/></timeEvent>
@@ -10,7 +39,7 @@
     <timeEvent time="+2m"><action type="pulse" value="140"/></timeEvent>
     <timeEvent time="+2m"><action type="pulse" value="145"/></timeEvent>
   </timeEvents>
-</program>
+</program>-->
 <!--<program name="41 minutes" duration="41m">
   <timeEvents>
     <timeEvent time="0"><action type="power" value="80"/></timeEvent>
