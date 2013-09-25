@@ -6,7 +6,7 @@
     <timeEvent time="+5m"><action type="power" value="140"/></timeEvent>
     <timeEvent time="+5m"><action type="power" value="160"/></timeEvent>
     <timeEvent time="+5m"><action type="power" value="140"/></timeEvent>
-    <timeEvent time="+2m30s"><action type="power" value="175"/></timeEvent>
+    <timeEvent time="+2m30s"><action type="power" value="180"/></timeEvent>
   </timeEvents>
 </program>
 <!--<program name="60 minutes" duration="61m">
