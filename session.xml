@@ -2,6 +2,24 @@
   <timeEvents>
     <timeEvent time="0"><action type="power" value="100"/></timeEvent>
     <timeEvent time="+1m"><action type="power" value="100"/></timeEvent>
+    <timeEvent time="+2m30s"><action type="power" value="130"/></timeEvent>
+    <timeEvent time="+2m30s"><action type="power" value="100"/></timeEvent>
+    <timeEvent time="+2m30s"><action type="power" value="130"/></timeEvent>
+    <timeEvent time="+2m30s"><action type="power" value="100"/></timeEvent>
+    <timeEvent time="+2m30s"><action type="power" value="130"/></timeEvent>
+    <timeEvent time="+2m30s"><action type="power" value="100"/></timeEvent>
+    <timeEvent time="+2m30s"><action type="power" value="130"/></timeEvent>
+    <timeEvent time="+2m30s"><action type="power" value="100"/></timeEvent>
+    <timeEvent time="+2m30s"><action type="power" value="130"/></timeEvent>
+    <timeEvent time="+2m30s"><action type="power" value="160"/></timeEvent>
+    <timeEvent time="+2m"><action type="power" value="80"/></timeEvent>
+  </timeEvents>
+</program>
+<!--
+<program name="25 minutes" duration="26m">
+  <timeEvents>
+    <timeEvent time="0"><action type="power" value="100"/></timeEvent>
+    <timeEvent time="+1m"><action type="power" value="100"/></timeEvent>
     <timeEvent time="+5m"><action type="power" value="120"/></timeEvent>
     <timeEvent time="+5m"><action type="power" value="100"/></timeEvent>
     <timeEvent time="+5m"><action type="power" value="120"/></timeEvent>
@@ -9,6 +27,7 @@
     <timeEvent time="+2m30s"><action type="power" value="150"/></timeEvent>
   </timeEvents>
 </program>
+-->
 <!--<program name="25 minutes" duration="26m">
   <timeEvents>
     <timeEvent time="0"><action type="power" value="100"/></timeEvent>
