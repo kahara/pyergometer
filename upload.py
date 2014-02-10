@@ -46,32 +46,36 @@ if True: #datafile_uploaded:
     
     for filename in dirwalk('data/'):
         if not filename.endswith('.json'):
-            time = filename.split('/')[1].split('.')[0]
-            nlines = 0
-            power = 0
-            rpm = 0
-            pulse = 0
-            target = 0
-            for index, line in enumerate(open(filename).read().split('\n')):
-                if index > 0 and len(line) > 0:
-                    nlines += 1
-                    parts = line.split(',')
-                    power += int(parts[1])
-                    rpm += int(parts[2])
-                    pulse += int(parts[3])
-                    target += int(parts[4])
-            total = power/3600
-            power = power/nlines
-            rpm = rpm/nlines
-            pulse = pulse/nlines
-            target = target/nlines
-            
-            data['overview'] += '%s,%d,%d,%d,%d,%d\n' % (time.split('T')[0], power, total, rpm, pulse, target)
-            
+
+            try:
+                time = filename.split('/')[1].split('.')[0]
+                nlines = 0
+                power = 0
+                rpm = 0
+                pulse = 0
+                target = 0
+                for index, line in enumerate(open(filename).read().split('\n')):
+                    if index > 0 and len(line) > 0:
+                        nlines += 1
+                        parts = line.split(',')
+                        power += int(parts[1])
+                        rpm += int(parts[2])
+                        pulse += int(parts[3])
+                        target += int(parts[4])
+                total = power/3600
+                power = power/nlines
+                rpm = rpm/nlines
+                pulse = pulse/nlines
+                target = target/nlines
+
+                data['overview'] += '%s,%d,%d,%d,%d,%d\n' % (time.split('T')[0], power, total, rpm, pulse, target)
+
+            except:
+                pass
+
     print 'uploading index', k.key
     k.set_contents_from_string(json.dumps(data), headers={'Content-Type': 'application/json'})
-    
-    
+        
 for filename in dirwalk('www/'):
     if filename in keynames or 'index.json' == filename or filename.endswith('.csv') or filename.startswith('www/.') or filename.startswith('www/#') or filename.endswith('~') or filename.endswith('-combined.js') or filename.endswith('-min.js') or filename.startswith('www/data'):
         continue
