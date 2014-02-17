@@ -5,6 +5,7 @@ log/*
 *~
 \#*
 data/*.json
+data-test
 www/live/latest.json
 build/
 www/data
