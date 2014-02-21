@@ -9,3 +9,4 @@ data-test
 www/live/latest.json
 build/
 www/data
+nohup.out
