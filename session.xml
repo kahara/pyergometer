@@ -2,15 +2,15 @@
   <timeEvents>
     <timeEvent time="0"><action type="power" value="80"/></timeEvent>
     <timeEvent time="+1m"><action type="power" value="100"/></timeEvent>
-    <timeEvent time="+2m30s"><action type="power" value="190"/></timeEvent>
+    <timeEvent time="+2m30s"><action type="power" value="200"/></timeEvent>
     <timeEvent time="+2m30s"><action type="power" value="100"/></timeEvent>
-    <timeEvent time="+2m30s"><action type="power" value="190"/></timeEvent>
+    <timeEvent time="+2m30s"><action type="power" value="200"/></timeEvent>
     <timeEvent time="+2m30s"><action type="power" value="100"/></timeEvent>
-    <timeEvent time="+2m30s"><action type="power" value="190"/></timeEvent>
+    <timeEvent time="+2m30s"><action type="power" value="200"/></timeEvent>
     <timeEvent time="+2m30s"><action type="power" value="100"/></timeEvent>
-    <timeEvent time="+2m30s"><action type="power" value="190"/></timeEvent>
+    <timeEvent time="+2m30s"><action type="power" value="200"/></timeEvent>
     <timeEvent time="+2m30s"><action type="power" value="100"/></timeEvent>
-    <timeEvent time="+2m30s"><action type="power" value="220"/></timeEvent>
+    <timeEvent time="+2m30s"><action type="power" value="250"/></timeEvent>
     <timeEvent time="+2m"><action type="power" value="80"/></timeEvent>
   </timeEvents>
 </program>
