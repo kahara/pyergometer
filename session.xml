@@ -1,8 +1,8 @@
-<program name="36 minutes" duration="36m">
+<program name="34 minutes" duration="34m">
   <timeEvents>
     <timeEvent time="0"><action type="power" value="80"/></timeEvent>
-    <timeEvent time="+1m"><action type="power" value="115"/></timeEvent>
-    <timeEvent time="+33m30s"><action type="power" value="80"/></timeEvent>
+    <timeEvent time="+1m"><action type="power" value="120"/></timeEvent>
+    <timeEvent time="+32m30s"><action type="power" value="80"/></timeEvent>
   </timeEvents>
 </program>
 <!--
