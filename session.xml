@@ -1,10 +1,17 @@
-<program name="31 minutes" duration="31m">
+<program name="15 minutes" duration="15m">
+  <timeEvents>
+    <timeEvent time="0"><action type="power" value="80"/></timeEvent>
+    <timeEvent time="+1m"><action type="power" value="140"/></timeEvent>
+    <timeEvent time="+13m30s"><action type="power" value="80"/></timeEvent>
+  </timeEvents>
+</program>
+<!--<program name="31 minutes" duration="31m">
   <timeEvents>
     <timeEvent time="0"><action type="power" value="80"/></timeEvent>
     <timeEvent time="+1m"><action type="power" value="135"/></timeEvent>
     <timeEvent time="+29m30s"><action type="power" value="80"/></timeEvent>
   </timeEvents>
-</program>
+</program>-->
 <!--
 <program name="25 minutes" duration="26m">
   <timeEvents>
